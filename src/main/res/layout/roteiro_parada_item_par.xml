@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:layout_margin="10dp"
+    card_view:cardCornerRadius="0dp"
+    card_view:backgroundTint="@color/wallet_holo_blue_light"
+    card_view:cardUseCompatPadding="true"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/roteiro_parada_item_foto"/>
+
+
+            <Button
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:id="@+id/roteiro_parada_item_editar"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="0dp"
+                android:layout_marginRight="0dp"
+                android:background="@drawable/roteiro_parada_button"
+                android:elevation="5dp"
+                android:gravity="center"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:focusableInTouchMode="false"
+                android:layout_height="match_parent"
+                android:id="@+id/framelayout_parada" />
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:textStyle="italic"
+                android:layout_height="match_parent"
+                android:layout_weight="2"
+                android:id="@+id/roteiro_parada_item_descricao"/>
+
+
+
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>
