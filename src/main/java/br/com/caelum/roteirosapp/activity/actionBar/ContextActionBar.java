@@ -2,11 +2,14 @@ package br.com.caelum.roteirosapp.activity.actionBar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import br.com.caelum.roteirosapp.R;
+import br.com.caelum.roteirosapp.activity.MostraViagemActivity;
 import br.com.caelum.roteirosapp.activity.RoteirosActivity;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
 import br.com.caelum.roteirosapp.activity.dao.ViagemDao;
@@ -32,6 +35,24 @@ public class ContextActionBar implements ActionMode.Callback {
 
         activity.getMenuInflater().inflate(R.menu.context_action_bar, menu);
 
+
+        MenuItem mapa = menu.findItem(R.id.menu_action_rota);
+
+        mapa.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+               /* Intent intent = new Intent(activity, MostraViagemActivity.class);
+                intent.putExtra ("viagem" ,viagemSelecionada);
+                activity.startActivity(intent);
+*/
+
+                Toast.makeText(activity, "Não esqueca de arrumar isso", Toast.LENGTH_LONG).show();
+
+
+                return false;
+            }
+        });
+
         MenuItem deletar = menu.findItem(R.id.menu_action_deletar);
 
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
@@ -54,17 +75,7 @@ public class ContextActionBar implements ActionMode.Callback {
                                 activity.carregaLista();
                                 mode.finish();
                             }
-                        }).show()
-
-                ;
-
-
-
-
-
-
-
-
+                        }).show();
 
                 return false;
             }

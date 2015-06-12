@@ -32,6 +32,8 @@ public class ParadaDao  {
         values.put("descricao", parada.getDescricao());
         values.put("caminhoDaFoto", parada.getCaminhoDaFoto());
         values.put("idViagem", id);
+        values.put("latitude", parada.getLatitude());
+        values.put("longitude", parada.getLongitude());
 
         dao.getWritableDatabase().insert(TABELA, null, values);
     }

@@ -3,17 +3,15 @@ package br.com.caelum.roteirosapp.activity.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.Serializable;
 import java.util.List;
 
 import br.com.caelum.roteirosapp.R;
@@ -60,7 +58,6 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
         View view = activity.getLayoutInflater().inflate(R.layout.roteiro_parada_item, parent, false);
 
-
         final Parada parada = paradas.get(position);
 
         daoHelper = new DatabaseHelperDao(activity);
@@ -83,11 +80,14 @@ public class RoteiroViagemAdapter extends BaseAdapter {
             }
         });
 
+
+
+
         MapaFragment mapa = new MapaFragment(parada);
+        Log.i("PRESTA ATENCAO", String.valueOf(parada.getLongitude()));
 
         FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.framelayout_parada, mapa);
-        transaction.addToBackStack(null);
         transaction.commit();
 
 

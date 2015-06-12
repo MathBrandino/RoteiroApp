@@ -27,6 +27,7 @@ public class FormularioViagemActivity extends AppCompatActivity {
         daoHelper = new DatabaseHelperDao(this);
 
         helper = new FormularioViagemHelper(this);
+
     }
 
     @Override

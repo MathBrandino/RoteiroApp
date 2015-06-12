@@ -64,6 +64,10 @@
             android:label="Cadastro de Viagem"
             />
 
+        <activity android:name=".activity.MostraViagemActivity"
+            android:label="Mapa"
+            />
+
 
 
     </application>

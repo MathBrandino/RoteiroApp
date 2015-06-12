@@ -11,7 +11,7 @@ public class DatabaseHelperDao extends SQLiteOpenHelper {
 
 
     private final static String DATABASE = "RoteirosApp" ;
-    private final static int VERSAO =  3;
+    private final static int VERSAO =  4;
     private final static String TABELAParadas = "Paradas";
     private final static String TABELAViagens = "Viagens";
 
@@ -34,6 +34,8 @@ public class DatabaseHelperDao extends SQLiteOpenHelper {
                         " (id INTEGER PRIMARY KEY, " +
                         " descricao TEXT NOT NULL ," +
                         " caminhoDaFoto TEXT ," +
+                        " longitude TEXT,   " +
+                        " latitude TEXT,  "+
                         " idViagem INTEGER NOT NULL, " +
                         "  FOREIGN KEY(idViagem) REFERENCES  "+ TABELAViagens + " (id) ); ";
 

@@ -40,6 +40,25 @@
         android:id="@+id/formulario_descricao_parada"/>
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/formulario_latitude"
+        android:text="Latitude"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/formulario_longitude"
+        android:text="Longitude" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/formulario_botao_coordenadas"
+        android:text="Pegar coordenadas"/>
+
+
 
 
 </LinearLayout>

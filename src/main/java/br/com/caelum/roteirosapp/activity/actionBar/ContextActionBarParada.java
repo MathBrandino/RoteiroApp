@@ -38,6 +38,7 @@ public class ContextActionBarParada implements ActionMode.Callback {
 
         MenuItem mapa =  menu.findItem(R.id.menu_action_rota);
         mapa.setTitle("Rota até  Parada");
+        mapa.setVisible(false);
 
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

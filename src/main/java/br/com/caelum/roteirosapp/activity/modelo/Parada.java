@@ -10,6 +10,24 @@ public class Parada implements Serializable {
     Long id;
     String descricao;
     String caminhoDaFoto;
+    double latitude;
+    double longitude;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
 
     public Long getId() {
         return id;

@@ -1,25 +1,24 @@
 package br.com.caelum.roteirosapp.activity;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.Toast;
+
 
 import java.io.File;
-import java.io.Serializable;
-import java.security.Provider;
-import java.util.List;
 
 import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
@@ -83,8 +82,38 @@ public class FormularioParadaActivity extends AppCompatActivity {
 
 
 
+        Button buttonCoordenada = helper.getButtonCoordenadas();
 
+        buttonCoordenada.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LocationManager lManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                LocationListener lListener = new LocationListener() {
+                    public void onLocationChanged(Location locat) {
+                        Double latitude = locat.getLatitude();
+                        Double longitude = locat.getLongitude();
+
+                        helper.setaCoordenadas(latitude.toString(), longitude.toString());
+                    }
+
+                    public void onStatusChanged(String provider, int status, Bundle extras) {
+                    }
+
+                    public void onProviderEnabled(String provider) {
+                    }
+
+                    public void onProviderDisabled(String provider) {
+                    }
+
+
+                };
+
+            lManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, lListener);
+
+            }
+        });
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -109,6 +138,7 @@ public class FormularioParadaActivity extends AppCompatActivity {
                     if(parada.getId() == null){
 
                         dao.insere(parada, viagem.getId());
+                        Log.i("lat","------------------- " + String.valueOf(parada.getLatitude())+" ---------------------- ");
                         finish();
 
 
