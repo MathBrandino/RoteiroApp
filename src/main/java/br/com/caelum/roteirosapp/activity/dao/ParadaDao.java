@@ -52,6 +52,8 @@ public class ParadaDao  {
             parada.setId(cursor.getLong(cursor.getColumnIndex("id")));
             parada.setDescricao(cursor.getString(cursor.getColumnIndex("descricao")));
             parada.setCaminhoDaFoto(cursor.getString(cursor.getColumnIndex("caminhoDaFoto")));
+            parada.setLongitude(cursor.getDouble(cursor.getColumnIndex("longitude")));
+            parada.setLatitude(cursor.getDouble(cursor.getColumnIndex("latitude")));
 
             paradas.add(parada);
         }

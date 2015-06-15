@@ -3,6 +3,7 @@ package br.com.caelum.roteirosapp.activity.helper;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -48,7 +49,20 @@ public class FormularioParadaHelper {
         parada.setLongitude(Double.parseDouble(longitude.getText().toString()));
 
 
+
         return parada;
+    }
+
+
+    public void carregaImagem(String caminhoDaFoto) {
+
+        Bitmap imagemFoto = BitmapFactory.decodeFile(caminhoDaFoto);
+
+        Bitmap imagemFotoReduzida = Bitmap.createScaledBitmap(imagemFoto, imagemFoto.getWidth(), 300, true);
+
+        fotoParada.setScaleType(ImageView.ScaleType.FIT_XY);
+        fotoParada.setImageBitmap(imagemFotoReduzida);
+        fotoParada.setTag(caminhoDaFoto);
     }
 
     public void colocaParadaFormulario(Parada parada) {
@@ -69,31 +83,9 @@ public class FormularioParadaHelper {
         return !descricao.getText().toString().trim().isEmpty();
     }
 
-
-
     public void mostraErro() {
         descricao.setError("Descricao da parada não pode ser vazio");
     }
-
-    public Button getButtonFoto() {
-        return buttonFoto;
-    }
-
-    public Button getButtonCoordenadas() {
-        return buttonCoordenadas;
-    }
-
-    public void carregaImagem(String caminhoDaFoto) {
-
-        Bitmap imagemFoto = BitmapFactory.decodeFile(caminhoDaFoto);
-
-        Bitmap imagemFotoReduzida = Bitmap.createScaledBitmap(imagemFoto, imagemFoto.getWidth(), 300, true);
-
-        fotoParada.setScaleType(ImageView.ScaleType.FIT_XY);
-        fotoParada.setImageBitmap(imagemFotoReduzida);
-        fotoParada.setTag(caminhoDaFoto);
-    }
-
 
     public boolean valida() {
         if (!temDescricao()) {
@@ -107,6 +99,16 @@ public class FormularioParadaHelper {
     public void setaCoordenadas(String lat, String lon){
         this.latitude.setText(lat);
         this.longitude.setText(lon);
-
     }
+
+
+
+    public Button getButtonFoto() {
+        return buttonFoto;
+    }
+
+    public Button getButtonCoordenadas() {
+        return buttonCoordenadas;
+    }
+
 }

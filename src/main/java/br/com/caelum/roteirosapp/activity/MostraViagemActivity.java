@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.fragment.MapaFragment;
+import br.com.caelum.roteirosapp.activity.fragment.MapaRoteiroFragment;
 import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 
 /**
@@ -24,7 +25,7 @@ public class MostraViagemActivity extends AppCompatActivity {
         Intent intent = getIntent();
         viagem = (Viagem) intent.getSerializableExtra("viagem");
 
-        MapaFragment mapaFragment = new MapaFragment();
+        MapaRoteiroFragment mapaFragment = new MapaRoteiroFragment(viagem);
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 

@@ -41,12 +41,10 @@ public class ContextActionBar implements ActionMode.Callback {
         mapa.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
-               /* Intent intent = new Intent(activity, MostraViagemActivity.class);
+                Intent intent = new Intent(activity, MostraViagemActivity.class);
                 intent.putExtra ("viagem" ,viagemSelecionada);
                 activity.startActivity(intent);
-*/
 
-                Toast.makeText(activity, "Não esqueca de arrumar isso", Toast.LENGTH_LONG).show();
 
 
                 return false;

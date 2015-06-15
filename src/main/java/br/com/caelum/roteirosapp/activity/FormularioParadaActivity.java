@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import java.io.File;
@@ -51,6 +52,9 @@ public class FormularioParadaActivity extends AppCompatActivity {
 
         if(intent.hasExtra("viagem")){
             viagem = (Viagem) intent.getSerializableExtra("viagem");
+
+            Toast.makeText(this, "Para salvar é necessário ter coordenadas", Toast.LENGTH_LONG).show();
+
         }
 
         if (intent.hasExtra("Editar")){
@@ -87,13 +91,14 @@ public class FormularioParadaActivity extends AppCompatActivity {
         buttonCoordenada.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                LocationManager lManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
-                LocationListener lListener = new LocationListener() {
-                    public void onLocationChanged(Location locat) {
-                        Double latitude = locat.getLatitude();
-                        Double longitude = locat.getLongitude();
+                LocationManager locationManager = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
+                LocationListener locationListener = new LocationListener() {
+                    public void onLocationChanged(Location location) {
+                        Double latitude = location.getLatitude();
+                        Double longitude = location.getLongitude();
 
                         helper.setaCoordenadas(latitude.toString(), longitude.toString());
+
                     }
 
                     public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -108,7 +113,7 @@ public class FormularioParadaActivity extends AppCompatActivity {
 
                 };
 
-            lManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, lListener);
+            locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 0, 0, locationListener);
 
             }
         });
@@ -118,13 +123,13 @@ public class FormularioParadaActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_formulario_parada, menu);
-
         return true;
     }
 
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+
 
         switch (item.getItemId()){
 
@@ -138,7 +143,6 @@ public class FormularioParadaActivity extends AppCompatActivity {
                     if(parada.getId() == null){
 
                         dao.insere(parada, viagem.getId());
-                        Log.i("lat","------------------- " + String.valueOf(parada.getLatitude())+" ---------------------- ");
                         finish();
 
 

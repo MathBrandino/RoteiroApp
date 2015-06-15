@@ -51,20 +51,22 @@
                 android:layout_height="match_parent"
                 android:layout_weight="2"
                 android:id="@+id/roteiro_parada_item_descricao"/>
-
-            <RelativeLayout
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_weight="1">
+                android:layout_weight="1"
+                android:id="@+id/framelayout_parada"
+                >
 
-                <FrameLayout
+                <fragment
+                    class="br.com.caelum.roteirosapp.activity.fragment.MapaFragment"
                     android:layout_width="match_parent"
-                    android:focusableInTouchMode="false"
                     android:layout_height="match_parent"
-                    android:id="@+id/framelayout_parada" />
+                    android:focusableInTouchMode="false"
+                    />
 
-            </RelativeLayout>
 
+            </FrameLayout>
 
 
         </LinearLayout>

@@ -12,6 +12,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.gms.maps.SupportMapFragment;
+
 import java.util.List;
 
 import br.com.caelum.roteirosapp.R;
@@ -21,6 +23,7 @@ import br.com.caelum.roteirosapp.activity.actionBar.ContextActionBarParada;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
 import br.com.caelum.roteirosapp.activity.fragment.MapaFragment;
 import br.com.caelum.roteirosapp.activity.modelo.Parada;
+import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 
 /**
  * Created by matheus on 09/06/15.
@@ -29,6 +32,7 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
     List<Parada> paradas ;
     RoteiroViagemActivity activity;
+    Viagem viagem;
 
     private DatabaseHelperDao daoHelper;
 
@@ -62,6 +66,10 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
         daoHelper = new DatabaseHelperDao(activity);
 
+        Intent intent = activity.getIntent();
+        viagem = (Viagem) intent.getSerializableExtra("viagem");
+
+
 
         TextView descricao = (TextView) view.findViewById(R.id.roteiro_parada_item_descricao);
         descricao.setText(parada.getDescricao());
@@ -80,15 +88,6 @@ public class RoteiroViagemAdapter extends BaseAdapter {
             }
         });
 
-
-
-
-        MapaFragment mapa = new MapaFragment(parada);
-        Log.i("PRESTA ATENCAO", String.valueOf(parada.getLongitude()));
-
-        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.framelayout_parada, mapa);
-        transaction.commit();
 
 
         Bitmap bm;
@@ -118,4 +117,7 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
         return view;
     }
+
 }
+
+

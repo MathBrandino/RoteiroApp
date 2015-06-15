@@ -1,13 +1,20 @@
 package br.com.caelum.roteirosapp.activity.fragment;
 
+import android.content.Intent;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 
+import java.util.List;
+
+import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
+import br.com.caelum.roteirosapp.activity.dao.ParadaDao;
 import br.com.caelum.roteirosapp.activity.modelo.Parada;
 import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 
@@ -32,10 +39,23 @@ public class MapaFragment extends SupportMapFragment {
     public void onResume() {
         super.onResume();
 
-        LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
-        getMap().addMarker(new MarkerOptions().title("Parada").position(latLng).visible(true));
-        getMap().moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+        Intent intent = getActivity().getIntent();
+        viagem = (Viagem) intent.getSerializableExtra("viagem");
 
+        DatabaseHelperDao helperDao = new DatabaseHelperDao(getActivity());
+        ParadaDao dao = new ParadaDao(helperDao);
+        List<Parada> paradas = dao.getLista(viagem);
+
+
+        for(Parada parada : paradas) {
+            GoogleMap map = getMap();
+            map.clear();
+            LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
+            map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 18));
+
+
+        }
 
     }
 }
