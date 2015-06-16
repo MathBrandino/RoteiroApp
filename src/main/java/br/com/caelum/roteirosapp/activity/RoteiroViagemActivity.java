@@ -7,13 +7,11 @@ import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.List;
 
 import br.com.caelum.roteirosapp.R;
-import br.com.caelum.roteirosapp.activity.actionBar.ContextActionBarParada;
 import br.com.caelum.roteirosapp.activity.adapter.RoteiroViagemAdapter;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
 import br.com.caelum.roteirosapp.activity.dao.ParadaDao;
@@ -41,7 +39,6 @@ public class RoteiroViagemActivity extends AppCompatActivity {
         getViagem();
 
         listParadas = (ListView) findViewById(R.id.lista_paradas);
-
 
     }
 
@@ -75,9 +72,7 @@ public class RoteiroViagemActivity extends AppCompatActivity {
 
                 return true;
 
-
         }
-
 
         return true;
     }
@@ -90,6 +85,7 @@ public class RoteiroViagemActivity extends AppCompatActivity {
     }
 
     public void carregaLista(){
+
         ParadaDao dao = new ParadaDao(daoHelper);
         List<Parada> paradas = dao.getLista(viagem);
         dao.close();

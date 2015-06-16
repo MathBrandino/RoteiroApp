@@ -33,7 +33,6 @@ public class RoteirosActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_roteiros);
 
-
         daoHelper = new DatabaseHelperDao(this);
 
         listRoteiro = (ListView) findViewById(R.id.lista_roteiros);
@@ -51,8 +50,6 @@ public class RoteirosActivity extends AppCompatActivity {
 
         registerForContextMenu(listRoteiro);
 
-
-
         listRoteiro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -65,14 +62,11 @@ public class RoteirosActivity extends AppCompatActivity {
             }
         });
 
-
-
         listRoteiro.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
                 Viagem viagemSelecionada = (Viagem) parent.getItemAtPosition(position);
-
 
                 ContextActionBar actionBar = new ContextActionBar(RoteirosActivity.this, viagemSelecionada, daoHelper);
 
@@ -81,7 +75,6 @@ public class RoteirosActivity extends AppCompatActivity {
                 return true;
             }
         });
-
 
         Button buttonAdd = (Button) findViewById(R.id.roteiros_botao_add);
 

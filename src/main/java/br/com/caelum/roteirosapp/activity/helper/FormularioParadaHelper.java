@@ -37,7 +37,6 @@ public class FormularioParadaHelper {
         longitude = (TextView) activity.findViewById(R.id.formulario_longitude );
         buttonCoordenadas = (Button) activity.findViewById(R.id.formulario_botao_coordenadas);
 
-
         parada = new Parada();
 
     }
@@ -47,8 +46,6 @@ public class FormularioParadaHelper {
         parada.setCaminhoDaFoto((String) fotoParada.getTag());
         parada.setLatitude(Double.parseDouble(latitude.getText().toString()));
         parada.setLongitude(Double.parseDouble(longitude.getText().toString()));
-
-
 
         return parada;
     }

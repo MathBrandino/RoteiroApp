@@ -64,7 +64,6 @@ public class ContextActionBar implements ActionMode.Callback {
                         .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogInterface, int which) {
 
-
                                 ViagemDao dao = new ViagemDao(daoHelper);
 
                                 dao.deleta(viagemSelecionada);

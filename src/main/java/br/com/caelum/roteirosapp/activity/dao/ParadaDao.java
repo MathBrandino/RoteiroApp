@@ -38,8 +38,6 @@ public class ParadaDao  {
         dao.getWritableDatabase().insert(TABELA, null, values);
     }
 
-
-
     public List<Parada> getLista(Viagem viagem){
 
         List<Parada> paradas = new ArrayList<Parada>();

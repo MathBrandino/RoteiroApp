@@ -3,12 +3,15 @@ package br.com.caelum.roteirosapp.activity.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -69,15 +72,11 @@ public class RoteiroViagemAdapter extends BaseAdapter {
         Intent intent = activity.getIntent();
         viagem = (Viagem) intent.getSerializableExtra("viagem");
 
-
-
         TextView descricao = (TextView) view.findViewById(R.id.roteiro_parada_item_descricao);
         descricao.setText(parada.getDescricao());
         descricao.setMinHeight(150);
 
-
         Button buttonEditar = (Button) view.findViewById(R.id.roteiro_parada_item_editar);
-        buttonEditar.setFocusable(false);
 
         buttonEditar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -87,8 +86,6 @@ public class RoteiroViagemAdapter extends BaseAdapter {
                 activity.startActivity(intent);
             }
         });
-
-
 
         Bitmap bm;
 

@@ -60,17 +60,7 @@ public class ContextActionBarParada implements ActionMode.Callback {
                                 activity.carregaLista();
                                 mode.finish();
                             }
-                        }).show()
-
-                ;
-
-
-
-
-
-
-
-
+                        }).show();
 
                 return false;
             }

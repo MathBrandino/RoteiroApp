@@ -63,8 +63,6 @@ public class FormularioParadaActivity extends AppCompatActivity {
 
         }
 
-
-
         Button button = helper.getButtonFoto();
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -130,7 +128,6 @@ public class FormularioParadaActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-
         switch (item.getItemId()){
 
             case R.id.menu_formulario_parada_salvar :
@@ -145,7 +142,6 @@ public class FormularioParadaActivity extends AppCompatActivity {
                         dao.insere(parada, viagem.getId());
                         finish();
 
-
                         return false;
 
                     }else {
@@ -157,14 +153,10 @@ public class FormularioParadaActivity extends AppCompatActivity {
                 }
                 dao.close();
 
-
-
             default:
                     return super.onOptionsItemSelected(item);
 
         }
-
-
     }
 
 

@@ -61,7 +61,6 @@ public class ViagemDao  {
         dao.getWritableDatabase().delete(TABELAPARADAS,"idViagem = ?", args );
         dao.getWritableDatabase().delete(TABELA, "id= ?", args);
 
-
     }
 
     public void close(){

@@ -52,10 +52,8 @@ public class FormularioViagemActivity extends AppCompatActivity {
                 } else {
                     helper.mostraErro();
                 }
-
                 return true;
         }
-
         return false;
     }
 }

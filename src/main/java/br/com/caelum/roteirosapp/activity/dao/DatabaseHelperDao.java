@@ -39,9 +39,6 @@ public class DatabaseHelperDao extends SQLiteOpenHelper {
                         " idViagem INTEGER NOT NULL, " +
                         "  FOREIGN KEY(idViagem) REFERENCES  "+ TABELAViagens + " (id) ); ";
 
-
-
-
         db.execSQL(sql);
         db.execSQL(ddl);
 
