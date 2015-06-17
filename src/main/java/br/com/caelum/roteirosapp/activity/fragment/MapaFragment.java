@@ -24,9 +24,9 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 public class MapaFragment extends SupportMapFragment {
 
     private Parada parada;
-    private Viagem viagem;
 
-    public MapaFragment() {
+    public MapaFragment(Parada parada) {
+        this.parada = parada;
     }
 
 
@@ -34,22 +34,11 @@ public class MapaFragment extends SupportMapFragment {
     public void onResume() {
         super.onResume();
 
-        Intent intent = getActivity().getIntent();
-        viagem = (Viagem) intent.getSerializableExtra("viagem");
+        GoogleMap map = getMap();
+        map.clear();
+        LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
+        map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
+        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
 
-        DatabaseHelperDao helperDao = new DatabaseHelperDao(getActivity());
-
-        ParadaDao dao = new ParadaDao(helperDao);
-        List<Parada> paradas = dao.getLista(viagem);
-
-        for (Parada parada : paradas) {
-
-
-            GoogleMap map = getMap();
-            LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
-            map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-
-        }
     }
 }

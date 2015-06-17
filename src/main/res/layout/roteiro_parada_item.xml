@@ -21,7 +21,10 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/roteiro_parada_item_foto" />
+                android:id="@+id/roteiro_parada_item_foto"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true" />
 
 
             <Button
@@ -57,13 +60,16 @@
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:focusableInTouchMode="false">
+                android:id="@+id/framelayout_parada"
+                android:focusable="false">
 
-                <fragment
+                <com.google.android.gms.maps.MapView
                     android:layout_width="match_parent"
+                    android:id="@+id/map"
                     android:layout_height="match_parent"
-                    class="br.com.caelum.roteirosapp.activity.fragment.MapaFragment" />
+                    android:tag="map"
 
+                    />
 
             </FrameLayout>
 
