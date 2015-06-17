@@ -3,19 +3,12 @@ package br.com.caelum.roteirosapp.activity.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
-import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
-
-import com.google.android.gms.maps.SupportMapFragment;
 
 import java.util.List;
 
@@ -24,7 +17,6 @@ import br.com.caelum.roteirosapp.activity.FormularioParadaActivity;
 import br.com.caelum.roteirosapp.activity.RoteiroViagemActivity;
 import br.com.caelum.roteirosapp.activity.actionBar.ContextActionBarParada;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
-import br.com.caelum.roteirosapp.activity.fragment.MapaFragment;
 import br.com.caelum.roteirosapp.activity.modelo.Parada;
 import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 
@@ -33,9 +25,9 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
  */
 public class RoteiroViagemAdapter extends BaseAdapter {
 
-    List<Parada> paradas ;
-    RoteiroViagemActivity activity;
-    Viagem viagem;
+    private List<Parada> paradas;
+    private RoteiroViagemActivity activity;
+    private Viagem viagem;
 
     private DatabaseHelperDao daoHelper;
 
@@ -89,12 +81,12 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
         Bitmap bm;
 
-        if(parada.getCaminhoDaFoto() != null){
+        if (parada.getCaminhoDaFoto() != null) {
             bm = BitmapFactory.decodeFile(parada.getCaminhoDaFoto());
-        }else {
+        } else {
             bm = BitmapFactory.decodeResource(activity.getResources(), R.drawable.person);
         }
-        bm = Bitmap.createScaledBitmap(bm, parent.getWidth(), 250 , true);
+        bm = Bitmap.createScaledBitmap(bm, parent.getWidth(), 250, true);
 
         ImageView imageView = (ImageView) view.findViewById(R.id.roteiro_parada_item_foto);
         imageView.setImageBitmap(bm);
@@ -111,6 +103,7 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
             }
         });
+
 
         return view;
     }

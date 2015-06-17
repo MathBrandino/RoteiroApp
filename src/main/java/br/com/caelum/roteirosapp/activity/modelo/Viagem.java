@@ -7,8 +7,8 @@ import java.io.Serializable;
  */
 public class Viagem implements Serializable {
 
-    Long id;
-    String nome;
+    private Long id;
+    private String nome;
 
     public Long getId() {
         return id;
@@ -29,6 +29,6 @@ public class Viagem implements Serializable {
 
     @Override
     public String toString() {
-        return getId() +" - "+ getNome();
+        return getId() + " - " + getNome();
     }
 }

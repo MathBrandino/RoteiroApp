@@ -23,8 +23,8 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
  */
 public class MapaRoteiroFragment extends SupportMapFragment {
 
-    Viagem viagem;
-    DatabaseHelperDao helperDao;
+    private Viagem viagem;
+    private DatabaseHelperDao helperDao;
 
 
     public MapaRoteiroFragment(Viagem viagem) {
@@ -42,12 +42,12 @@ public class MapaRoteiroFragment extends SupportMapFragment {
         LatLng latLng;
 
         if (paradas.size() != 0) {
-           latLng = new LatLng(paradas.get(0).getLatitude(), paradas.get(0).getLongitude());
+            latLng = new LatLng(paradas.get(0).getLatitude(), paradas.get(0).getLongitude());
         } else {
-            latLng = new LatLng(0,0);
+            latLng = new LatLng(0, 0);
         }
 
-        for(Parada parada : paradas){
+        for (Parada parada : paradas) {
 
             GoogleMap map = getMap();
 

@@ -23,11 +23,10 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
  */
 public class RoteiroViagemActivity extends AppCompatActivity {
 
-    List<Parada> paradas ;
-    ListView listParadas;
-    Viagem viagem;
+    private ListView listParadas;
+    private Viagem viagem;
 
-    DatabaseHelperDao daoHelper;
+    private DatabaseHelperDao daoHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,9 +42,9 @@ public class RoteiroViagemActivity extends AppCompatActivity {
     }
 
 
-    public Viagem getViagem(){
+    public Viagem getViagem() {
         Intent intent = getIntent();
-        if(intent.hasExtra("viagem")){
+        if (intent.hasExtra("viagem")) {
             viagem = (Viagem) intent.getSerializableExtra("viagem");
         }
 
@@ -64,8 +63,8 @@ public class RoteiroViagemActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-            case R.id.menu_roteiro_viagem_add :
+        switch (item.getItemId()) {
+            case R.id.menu_roteiro_viagem_add:
                 Intent intent = new Intent(this, FormularioParadaActivity.class);
                 intent.putExtra("viagem", viagem);
                 startActivity(intent);
@@ -84,7 +83,7 @@ public class RoteiroViagemActivity extends AppCompatActivity {
 
     }
 
-    public void carregaLista(){
+    public void carregaLista() {
 
         ParadaDao dao = new ParadaDao(daoHelper);
         List<Parada> paradas = dao.getLista(viagem);

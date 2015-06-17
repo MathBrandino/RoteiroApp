@@ -7,8 +7,8 @@
     android:layout_margin="10dp"
     card_view:cardCornerRadius="0dp"
     card_view:backgroundTint="@color/wallet_holo_blue_light"
-    card_view:cardUseCompatPadding="true"
-    >
+    card_view:cardUseCompatPadding="true">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -21,7 +21,7 @@
             <ImageView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/roteiro_parada_item_foto"/>
+                android:id="@+id/roteiro_parada_item_foto" />
 
 
             <Button
@@ -37,8 +37,7 @@
                 android:gravity="center"
                 android:focusable="false"
                 android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                />
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -51,21 +50,26 @@
                 android:textStyle="italic"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
-                android:id="@+id/roteiro_parada_item_descricao"/>
+                android:id="@+id/roteiro_parada_item_descricao" />
 
 
-            <fragment
-                class="br.com.caelum.roteirosapp.activity.fragment.MapaFragment"
+            <FrameLayout
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:focusableInTouchMode="false"/>
+                android:focusableInTouchMode="false">
+
+                <fragment
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    class="br.com.caelum.roteirosapp.activity.fragment.MapaFragment" />
 
 
+            </FrameLayout>
 
 
         </LinearLayout>
 
     </LinearLayout>
 
-    </android.support.v7.widget.CardView>
+</android.support.v7.widget.CardView>

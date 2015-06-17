@@ -24,9 +24,9 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 
 public class RoteirosActivity extends AppCompatActivity {
 
-    ListView listRoteiro;
-    List<Viagem> viagens;
-    DatabaseHelperDao daoHelper;
+    private ListView listRoteiro;
+    private List<Viagem> viagens;
+    private DatabaseHelperDao daoHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,9 +38,9 @@ public class RoteirosActivity extends AppCompatActivity {
         listRoteiro = (ListView) findViewById(R.id.lista_roteiros);
 
         ViagemDao dao = new ViagemDao(daoHelper);
-        viagens =  dao.getLista();
+        viagens = dao.getLista();
 
-        if(viagens.size() < 1) {
+        if (viagens.size() < 1) {
             Toast.makeText(this, "Adicione uma nova viagem selecionando o botão '+' ", Toast.LENGTH_LONG).show();
         }
 
@@ -57,7 +57,7 @@ public class RoteirosActivity extends AppCompatActivity {
                 Viagem viagem = (Viagem) listRoteiro.getItemAtPosition(position);
 
                 Intent intent = new Intent(RoteirosActivity.this, RoteiroViagemActivity.class);
-                intent.putExtra("viagem" ,viagem);
+                intent.putExtra("viagem", viagem);
                 startActivity(intent);
             }
         });
@@ -115,7 +115,7 @@ public class RoteirosActivity extends AppCompatActivity {
         this.carregaLista();
     }
 
-    public void carregaLista(){
+    public void carregaLista() {
         ViagemDao dao = new ViagemDao(daoHelper);
         List<Viagem> viagens = dao.getLista();
         dao.close();

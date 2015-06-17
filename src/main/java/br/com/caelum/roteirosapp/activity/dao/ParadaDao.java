@@ -15,7 +15,7 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 /**
  * Created by matheus on 08/06/15.
  */
-public class ParadaDao  {
+public class ParadaDao {
 
     private final static String TABELA = "Paradas";
 
@@ -26,7 +26,7 @@ public class ParadaDao  {
         this.dao = dao;
     }
 
-    public void insere(Parada parada,Long id){
+    public void insere(Parada parada, Long id) {
         ContentValues values = new ContentValues();
 
         values.put("descricao", parada.getDescricao());
@@ -38,13 +38,13 @@ public class ParadaDao  {
         dao.getWritableDatabase().insert(TABELA, null, values);
     }
 
-    public List<Parada> getLista(Viagem viagem){
+    public List<Parada> getLista(Viagem viagem) {
 
         List<Parada> paradas = new ArrayList<Parada>();
 
-        Cursor cursor = dao.getReadableDatabase().rawQuery(" Select * from  " + TABELA + " where idViagem = " + viagem.getId() +" ;", null);
+        Cursor cursor = dao.getReadableDatabase().rawQuery(" Select * from  " + TABELA + " where idViagem = " + viagem.getId() + " ;", null);
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Parada parada = new Parada();
 
             parada.setId(cursor.getLong(cursor.getColumnIndex("id")));
@@ -57,33 +57,33 @@ public class ParadaDao  {
         }
         cursor.close();
 
-        return  paradas;
+        return paradas;
     }
 
 
     public void deleta(Parada parada) {
 
-        String [] args = { parada.getId().toString() };
+        String[] args = {parada.getId().toString()};
         dao.getWritableDatabase().delete(TABELA, "id= ?", args);
 
 
     }
 
 
-    public void altera(Parada parada){
+    public void altera(Parada parada) {
 
         ContentValues values = new ContentValues();
 
         values.put("descricao", parada.getDescricao());
         values.put("caminhoDaFoto", parada.getCaminhoDaFoto());
 
-        String [] args = {String.valueOf(parada.getId())};
+        String[] args = {String.valueOf(parada.getId())};
 
         dao.getWritableDatabase().update(TABELA, values, "id=?", args);
 
     }
 
-    public void close(){
+    public void close() {
         dao.close();
     }
 }

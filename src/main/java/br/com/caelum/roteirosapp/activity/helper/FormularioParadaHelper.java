@@ -34,7 +34,7 @@ public class FormularioParadaHelper {
         buttonFoto = (Button) activity.findViewById(R.id.formulario_botao_foto);
         descricao = (EditText) activity.findViewById(R.id.formulario_descricao_parada);
         latitude = (TextView) activity.findViewById(R.id.formulario_latitude);
-        longitude = (TextView) activity.findViewById(R.id.formulario_longitude );
+        longitude = (TextView) activity.findViewById(R.id.formulario_longitude);
         buttonCoordenadas = (Button) activity.findViewById(R.id.formulario_botao_coordenadas);
 
         parada = new Parada();
@@ -84,7 +84,7 @@ public class FormularioParadaHelper {
         descricao.setError("Descricao da parada não pode ser vazio");
     }
 
-    public boolean valida() {
+    public boolean validaParada() {
         if (!temDescricao()) {
             mostraErro();
             return false;
@@ -93,11 +93,10 @@ public class FormularioParadaHelper {
 
     }
 
-    public void setaCoordenadas(String lat, String lon){
+    public void setaCoordenadas(String lat, String lon) {
         this.latitude.setText(lat);
         this.longitude.setText(lon);
     }
-
 
 
     public Button getButtonFoto() {

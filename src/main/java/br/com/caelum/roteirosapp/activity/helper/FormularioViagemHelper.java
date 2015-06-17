@@ -9,7 +9,7 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 /**
  * Created by matheus on 08/06/15.
  */
-public class FormularioViagemHelper  {
+public class FormularioViagemHelper {
 
     private EditText nome;
 
@@ -21,17 +21,17 @@ public class FormularioViagemHelper  {
         viagem = new Viagem();
     }
 
-    public Viagem pegaViagemDoFormulario(){
+    public Viagem pegaViagemDoFormulario() {
         viagem.setNome(nome.getText().toString());
 
         return viagem;
     }
 
-    public boolean temNome(){
+    public boolean temNome() {
         return !nome.getText().toString().isEmpty();
     }
 
-    public void mostraErro(){
+    public void mostraErro() {
         nome.setError("Nome da viagem não pode ser vazio");
     }
 }

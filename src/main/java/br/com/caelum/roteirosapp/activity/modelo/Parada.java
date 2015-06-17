@@ -7,11 +7,11 @@ import java.io.Serializable;
  */
 public class Parada implements Serializable {
 
-    Long id;
-    String descricao;
-    String caminhoDaFoto;
-    double latitude;
-    double longitude;
+    private Long id;
+    private String descricao;
+    private String caminhoDaFoto;
+    private double latitude;
+    private double longitude;
 
     public double getLatitude() {
         return latitude;

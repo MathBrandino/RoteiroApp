@@ -15,10 +15,10 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
  */
 public class MostraViagemActivity extends AppCompatActivity {
 
-    Viagem viagem;
+    private Viagem viagem;
 
     @Override
-    public void onCreate (Bundle bundle){
+    public void onCreate(Bundle bundle) {
         super.onCreate(bundle);
         setContentView(R.layout.activity_mostra_viagem);
 

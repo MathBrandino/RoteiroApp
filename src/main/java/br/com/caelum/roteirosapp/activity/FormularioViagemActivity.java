@@ -16,8 +16,8 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
  */
 public class FormularioViagemActivity extends AppCompatActivity {
 
-    DatabaseHelperDao daoHelper;
-    FormularioViagemHelper helper;
+    private DatabaseHelperDao daoHelper;
+    private FormularioViagemHelper viagemHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class FormularioViagemActivity extends AppCompatActivity {
 
         daoHelper = new DatabaseHelperDao(this);
 
-        helper = new FormularioViagemHelper(this);
+        viagemHelper = new FormularioViagemHelper(this);
 
     }
 
@@ -40,17 +40,17 @@ public class FormularioViagemActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch (item.getItemId()){
-            case R.id.menu_formulario_viagem_salvar :
-                Viagem viagem = helper.pegaViagemDoFormulario();
+        switch (item.getItemId()) {
+            case R.id.menu_formulario_viagem_salvar:
+                Viagem viagem = viagemHelper.pegaViagemDoFormulario();
 
                 ViagemDao dao = new ViagemDao(daoHelper);
-                if(helper.temNome()) {
+                if (viagemHelper.temNome()) {
                     dao.insere(viagem);
                     dao.close();
                     finish();
                 } else {
-                    helper.mostraErro();
+                    viagemHelper.mostraErro();
                 }
                 return true;
         }

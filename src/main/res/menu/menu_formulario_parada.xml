@@ -6,9 +6,7 @@
         app:showAsAction="always"
         android:id="@+id/menu_formulario_parada_salvar"
         android:icon="@drawable/ic_confirmar"
-        android:title="Salvar"
-        />
-
+        android:title="Salvar" />
 
 
 </menu>

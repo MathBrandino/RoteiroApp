@@ -17,7 +17,7 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 public class ViagemDao  {
 
     private final static String TABELA = "Viagens";
-    private final static String TABELAPARADAS= "Paradas";
+    private final static String TABELAPARADAS = "Paradas";
 
     private final DatabaseHelperDao dao;
 
@@ -26,7 +26,7 @@ public class ViagemDao  {
     }
 
 
-    public void insere(Viagem viagem){
+    public void insere(Viagem viagem) {
         ContentValues values = new ContentValues();
 
         values.put("nome", viagem.getNome());
@@ -35,14 +35,13 @@ public class ViagemDao  {
     }
 
 
-
-    public List<Viagem>  getLista(){
+    public List<Viagem> getLista() {
 
         List<Viagem> viagens = new ArrayList<Viagem>();
 
         Cursor cursor = dao.getReadableDatabase().rawQuery(" Select * from  " + TABELA + " ;", null);
 
-        while (cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             Viagem viagem = new Viagem();
 
             viagem.setId(cursor.getLong(cursor.getColumnIndex("id")));
@@ -52,18 +51,18 @@ public class ViagemDao  {
         }
         cursor.close();
 
-        return  viagens;
+        return viagens;
     }
 
     public void deleta(Viagem viagem) {
 
-        String [] args = { viagem.getId().toString() };
-        dao.getWritableDatabase().delete(TABELAPARADAS,"idViagem = ?", args );
+        String[] args = {viagem.getId().toString()};
+        dao.getWritableDatabase().delete(TABELAPARADAS, "idViagem = ?", args);
         dao.getWritableDatabase().delete(TABELA, "id= ?", args);
 
     }
 
-    public void close(){
+    public void close() {
         dao.close();
     }
 }

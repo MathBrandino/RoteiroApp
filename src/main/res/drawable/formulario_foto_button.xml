@@ -3,14 +3,13 @@
 
     <item>
         <shape android:shape="oval">
-            <solid android:color="#FF0000"/>
+            <solid android:color="#FF0000" />
             <padding
                 android:bottom="10dp"
                 android:left="10dp"
                 android:right="10dp"
-                android:top="10dp"
-                />
+                android:top="10dp" />
         </shape>
     </item>
-    <item android:drawable="@drawable/ic_camera"/>
+    <item android:drawable="@drawable/ic_camera" />
 </layer-list>

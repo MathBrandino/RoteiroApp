@@ -1,10 +1,10 @@
 package br.com.caelum.roteirosapp.activity.fragment;
 
+
 import android.content.Intent;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.GoogleMapOptions;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
@@ -23,9 +23,11 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
  */
 public class MapaFragment extends SupportMapFragment {
 
-    Viagem viagem;
+    private Parada parada;
+    private Viagem viagem;
 
-
+    public MapaFragment() {
+    }
 
 
     @Override
@@ -39,19 +41,15 @@ public class MapaFragment extends SupportMapFragment {
 
         ParadaDao dao = new ParadaDao(helperDao);
         List<Parada> paradas = dao.getLista(viagem);
-        dao.close();
-        int n = 0;
 
-        while (n < paradas.size()) {
-            Parada parada = paradas.get(n);
+        for (Parada parada : paradas) {
+
 
             GoogleMap map = getMap();
-
-
             LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
             map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 15));
-            n++;
+
         }
     }
 }

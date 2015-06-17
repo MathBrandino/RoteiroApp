@@ -27,7 +27,7 @@ public class ContextActionBar implements ActionMode.Callback {
     public ContextActionBar(RoteirosActivity activity, Viagem viagemSelecionada, DatabaseHelperDao daoHelper) {
         this.activity = activity;
         this.viagemSelecionada = viagemSelecionada;
-        this.daoHelper =daoHelper;
+        this.daoHelper = daoHelper;
     }
 
     @Override
@@ -42,9 +42,8 @@ public class ContextActionBar implements ActionMode.Callback {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 Intent intent = new Intent(activity, MostraViagemActivity.class);
-                intent.putExtra ("viagem" ,viagemSelecionada);
+                intent.putExtra("viagem", viagemSelecionada);
                 activity.startActivity(intent);
-
 
 
                 return false;

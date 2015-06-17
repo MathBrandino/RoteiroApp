@@ -22,7 +22,6 @@ public class ContextActionBarParada implements ActionMode.Callback {
     private DatabaseHelperDao daoHelper;
 
 
-
     public ContextActionBarParada(RoteiroViagemActivity activity, Parada paradaSelecionada, DatabaseHelperDao daoHelper) {
         this.activity = activity;
         this.paradaSelecionada = paradaSelecionada;
@@ -36,7 +35,7 @@ public class ContextActionBarParada implements ActionMode.Callback {
 
         MenuItem deletar = menu.findItem(R.id.menu_action_deletar);
 
-        MenuItem mapa =  menu.findItem(R.id.menu_action_rota);
+        MenuItem mapa = menu.findItem(R.id.menu_action_rota);
         mapa.setTitle("Rota até  Parada");
         mapa.setVisible(false);
 
