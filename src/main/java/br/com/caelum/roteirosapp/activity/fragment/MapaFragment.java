@@ -49,7 +49,8 @@ public class MapaFragment extends SupportMapFragment {
             map.clear();
             LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
             map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 9));
+
         }
     }
 }

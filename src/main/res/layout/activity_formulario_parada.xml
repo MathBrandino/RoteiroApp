@@ -39,22 +39,35 @@
         android:hint="Deixe aqui a descricao"
         android:id="@+id/formulario_descricao_parada" />
 
-
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/formulario_latitude" />
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:id="@+id/formulario_latitude" />
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/formulario_longitude" />
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/formulario_botao_coordenadas"
-        android:text="Pegar coordenadas" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="0.0"
+                android:id="@+id/formulario_longitude" />
+        </LinearLayout>
+        <Button
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:gravity="center"
+            android:background="@drawable/fundo_azul"
+            android:id="@+id/formulario_botao_coordenadas"
+             />
+    </LinearLayout>
 
 
 </LinearLayout>

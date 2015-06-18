@@ -120,7 +120,7 @@ public class RoteirosActivity extends AppCompatActivity {
         List<Viagem> viagens = dao.getLista();
         dao.close();
 
-        ArrayAdapter<Viagem> adapter = new ArrayAdapter<Viagem>(this, android.R.layout.simple_list_item_1, viagens);
+        ArrayAdapter<Viagem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, viagens);
 
         this.listRoteiro.setAdapter(adapter);
     }

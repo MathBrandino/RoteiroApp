@@ -41,7 +41,7 @@
 
         <activity
             android:name=".activity.RoteirosActivity"
-            android:label="Lista de Viagens" >
+             >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -51,7 +51,7 @@
 
         <activity
             android:name=".activity.RoteiroViagemActivity"
-            android:label="Roteiro da Viagem">
+            android:label="Paradas">
         </activity>
 
         <activity
