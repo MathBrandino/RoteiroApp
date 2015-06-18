@@ -29,16 +29,27 @@ public class MapaFragment extends SupportMapFragment {
         this.parada = parada;
     }
 
+    public MapaFragment() {
+    }
 
     @Override
     public void onResume() {
         super.onResume();
 
-        GoogleMap map = getMap();
-        map.clear();
-        LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
-        map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
-        map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+        Intent intent = getActivity().getIntent();
+        Viagem viagem = (Viagem) intent.getSerializableExtra("viagem");
 
+        DatabaseHelperDao databaseHelperDao = new DatabaseHelperDao(getActivity());
+        ParadaDao dao = new ParadaDao(databaseHelperDao);
+        List<Parada> paradas = dao.getLista(viagem);
+
+        for(Parada parada : paradas) {
+
+            GoogleMap map = getMap();
+            map.clear();
+            LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
+            map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
+        }
     }
 }

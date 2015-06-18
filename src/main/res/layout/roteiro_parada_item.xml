@@ -63,12 +63,10 @@
                 android:id="@+id/framelayout_parada"
                 android:focusable="false">
 
-                <com.google.android.gms.maps.MapView
+                <fragment
                     android:layout_width="match_parent"
-                    android:id="@+id/map"
                     android:layout_height="match_parent"
-                    android:tag="map"
-
+                    android:name="br.com.caelum.roteirosapp.activity.fragment.MapaFragment"
                     />
 
             </FrameLayout>

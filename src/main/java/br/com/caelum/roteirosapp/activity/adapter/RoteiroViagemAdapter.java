@@ -3,15 +3,17 @@ package br.com.caelum.roteirosapp.activity.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.google.android.gms.maps.MapView;
 
 import java.util.List;
 
@@ -107,13 +109,6 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
             }
         });
-
-        MapaFragment mapaFragment = new MapaFragment(parada);
-
-        FragmentTransaction transaction = activity.getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.framelayout_parada, mapaFragment, "map");
-        transaction.addToBackStack(null);
-        transaction.commit();
 
         return view;
     }

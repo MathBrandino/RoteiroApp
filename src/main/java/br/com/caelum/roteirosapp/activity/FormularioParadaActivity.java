@@ -20,6 +20,7 @@ import android.widget.Toast;
 import java.io.File;
 
 import br.com.caelum.roteirosapp.R;
+import br.com.caelum.roteirosapp.activity.camera.IniciadorDeCamera;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
 import br.com.caelum.roteirosapp.activity.dao.ParadaDao;
 import br.com.caelum.roteirosapp.activity.helper.FormularioParadaHelper;
@@ -67,16 +68,13 @@ public class FormularioParadaActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                caminhoDaFoto = getExternalFilesDir(null) + "/" + System.currentTimeMillis() + ".jpg";
+                IniciadorDeCamera iniciadorDeCamera = new IniciadorDeCamera(FormularioParadaActivity.this);
+
+                caminhoDaFoto = iniciadorDeCamera.caminhoFoto();
+
+                iniciadorDeCamera.iniciCamera(caminhoDaFoto, CODE);
 
 
-                Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-
-                Uri localFoto = Uri.fromFile(new File(caminhoDaFoto));
-
-                camera.putExtra(MediaStore.EXTRA_OUTPUT, localFoto);
-
-                startActivityForResult(camera, CODE);
             }
         });
 
