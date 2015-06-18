@@ -1,5 +1,6 @@
 package br.com.caelum.roteirosapp.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -24,9 +25,18 @@ public class FormularioViagemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_viagem);
 
+        Intent intent = getIntent();
+
+
         daoHelper = new DatabaseHelperDao(this);
 
         viagemHelper = new FormularioViagemHelper(this);
+
+
+        if (intent.hasExtra("Editar")){
+            viagemHelper.colocaViagemFormulario((Viagem) intent.getSerializableExtra("Editar"));
+
+        }
 
     }
 
@@ -45,13 +55,20 @@ public class FormularioViagemActivity extends AppCompatActivity {
                 Viagem viagem = viagemHelper.pegaViagemDoFormulario();
 
                 ViagemDao dao = new ViagemDao(daoHelper);
-                if (viagemHelper.temNome()) {
-                    dao.insere(viagem);
-                    dao.close();
-                    finish();
-                } else {
-                    viagemHelper.mostraErro();
+                if (viagemHelper.validaViagem()) {
+                    if (viagem.getId() == null) {
+                        dao.insere(viagem);
+                        dao.close();
+                        finish();
+
+                    } else {
+                        dao.altera(viagem);
+                        dao.close();
+                        finish();
+
+                    }
                 }
+
                 return true;
         }
         return false;

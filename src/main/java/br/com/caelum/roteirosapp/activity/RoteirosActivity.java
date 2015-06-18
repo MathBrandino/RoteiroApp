@@ -17,6 +17,7 @@ import java.util.List;
 
 import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.actionBar.ContextActionBar;
+import br.com.caelum.roteirosapp.activity.adapter.RoteiroAdapter;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
 import br.com.caelum.roteirosapp.activity.dao.ViagemDao;
 import br.com.caelum.roteirosapp.activity.modelo.Viagem;
@@ -43,12 +44,6 @@ public class RoteirosActivity extends AppCompatActivity {
         if (viagens.size() < 1) {
             Toast.makeText(this, "Adicione uma nova viagem selecionando o botão '+' ", Toast.LENGTH_LONG).show();
         }
-
-        ArrayAdapter<Viagem> adapter = new ArrayAdapter<Viagem>(this, android.R.layout.simple_list_item_1, viagens);
-
-        listRoteiro.setAdapter(adapter);
-
-        registerForContextMenu(listRoteiro);
 
         listRoteiro.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -120,9 +115,9 @@ public class RoteirosActivity extends AppCompatActivity {
         List<Viagem> viagens = dao.getLista();
         dao.close();
 
-        ArrayAdapter<Viagem> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, viagens);
-
+        RoteiroAdapter adapter = new RoteiroAdapter(viagens, this);
         this.listRoteiro.setAdapter(adapter);
+
     }
 
     @Override

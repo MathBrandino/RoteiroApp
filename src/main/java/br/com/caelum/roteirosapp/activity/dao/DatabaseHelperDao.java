@@ -11,7 +11,7 @@ public class DatabaseHelperDao extends SQLiteOpenHelper {
 
 
     private final static String DATABASE = "RoteirosApp";
-    private final static int VERSAO = 4;
+    private final static int VERSAO = 1;
     private final static String TABELAParadas = "Paradas";
     private final static String TABELAViagens = "Viagens";
 
@@ -26,7 +26,9 @@ public class DatabaseHelperDao extends SQLiteOpenHelper {
 
         String sql = "CREATE TABLE  " + TABELAViagens +
                 " (id INTEGER PRIMARY KEY, " +
-                " nome TEXT NOT NULL );";
+                " nome TEXT NOT NULL," +
+                " dataInicial TEXT," +
+                " dataFinal TEXT );";
 
 
         String ddl =

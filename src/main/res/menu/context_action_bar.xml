@@ -3,6 +3,11 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_action_alterar"
+        android:title="Alterar"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/menu_action_deletar"
         android:title="Deletar"
         app:showAsAction="always" />
@@ -12,6 +17,8 @@
         android:title="Rota viagem"
         android:icon="@drawable/ic_mapa"
         app:showAsAction="always" />
+
+
 
 
 </menu>

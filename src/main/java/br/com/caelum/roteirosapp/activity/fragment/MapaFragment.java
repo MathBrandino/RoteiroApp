@@ -25,9 +25,6 @@ public class MapaFragment extends SupportMapFragment {
 
     private Parada parada;
 
-    public MapaFragment(Parada parada) {
-        this.parada = parada;
-    }
 
     public MapaFragment() {
     }
@@ -49,7 +46,7 @@ public class MapaFragment extends SupportMapFragment {
             map.clear();
             LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
             map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
-            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 9));
+            map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
 
         }
     }

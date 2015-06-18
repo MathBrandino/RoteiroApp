@@ -52,7 +52,7 @@ public class FormularioParadaActivity extends AppCompatActivity {
         if (intent.hasExtra("viagem")) {
             viagem = (Viagem) intent.getSerializableExtra("viagem");
 
-            Toast.makeText(this, "Para salvar é necessário ter coordenadas", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Clique no botao para definir as coordenadas", Toast.LENGTH_LONG).show();
 
         }
 

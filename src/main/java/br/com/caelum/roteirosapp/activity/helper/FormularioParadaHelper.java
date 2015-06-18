@@ -20,7 +20,6 @@ public class FormularioParadaHelper {
     private Parada parada;
 
     private ImageView fotoParada;
-    private Button buttonFoto;
 
     private EditText descricao;
 
@@ -28,6 +27,8 @@ public class FormularioParadaHelper {
     private TextView longitude;
 
     private Button buttonCoordenadas;
+    private Button buttonFoto;
+
 
     public FormularioParadaHelper(Activity activity) {
         fotoParada = (ImageView) activity.findViewById(R.id.formulario_imagem);

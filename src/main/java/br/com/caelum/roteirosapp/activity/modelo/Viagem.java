@@ -9,6 +9,24 @@ public class Viagem implements Serializable {
 
     private Long id;
     private String nome;
+    private String dataInicio;
+    private String dataFinal;
+
+    public String getDataInicio() {
+        return dataInicio;
+    }
+
+    public void setDataInicio(String dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public String getDataFinal() {
+        return dataFinal;
+    }
+
+    public void setDataFinal(String dataFinal) {
+        this.dataFinal = dataFinal;
+    }
 
     public Long getId() {
         return id;
@@ -26,9 +44,8 @@ public class Viagem implements Serializable {
         this.nome = nome;
     }
 
-
     @Override
     public String toString() {
-        return getId() + " - " + getNome();
+        return getDataFinal();
     }
 }

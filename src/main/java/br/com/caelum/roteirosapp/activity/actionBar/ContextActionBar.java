@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.widget.Toast;
 
 import br.com.caelum.roteirosapp.R;
+import br.com.caelum.roteirosapp.activity.FormularioViagemActivity;
 import br.com.caelum.roteirosapp.activity.MostraViagemActivity;
 import br.com.caelum.roteirosapp.activity.RoteirosActivity;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
@@ -43,6 +44,20 @@ public class ContextActionBar implements ActionMode.Callback {
             public boolean onMenuItemClick(MenuItem item) {
                 Intent intent = new Intent(activity, MostraViagemActivity.class);
                 intent.putExtra("viagem", viagemSelecionada);
+                activity.startActivity(intent);
+
+
+                return false;
+            }
+        });
+
+        MenuItem alterar = menu.findItem(R.id.menu_action_alterar);
+
+        alterar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                Intent intent = new Intent(activity, FormularioViagemActivity.class);
+                intent.putExtra("Editar", viagemSelecionada);
                 activity.startActivity(intent);
 
 

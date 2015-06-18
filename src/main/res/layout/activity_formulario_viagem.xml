@@ -9,5 +9,26 @@
         android:layout_height="wrap_content"
         android:hint="Informe sua viagem aqui"
         android:id="@+id/formulario_descricao_viagem" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="date"
+            android:hint="Data Inicial"
+            android:id="@+id/formulario_viagem_data_inicial"/>
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:inputType="date"
+            android:hint="Data Final"
+            android:id="@+id/formulario_viagem_data_final"/>
+
+    </LinearLayout>
 
 </LinearLayout>

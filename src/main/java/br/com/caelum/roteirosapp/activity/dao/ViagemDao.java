@@ -30,6 +30,8 @@ public class ViagemDao  {
         ContentValues values = new ContentValues();
 
         values.put("nome", viagem.getNome());
+        values.put("dataInicial", viagem.getDataInicio());
+        values.put("dataFinal", viagem.getDataFinal());
 
         dao.getWritableDatabase().insert(TABELA, null, values);
     }
@@ -46,6 +48,8 @@ public class ViagemDao  {
 
             viagem.setId(cursor.getLong(cursor.getColumnIndex("id")));
             viagem.setNome(cursor.getString(cursor.getColumnIndex("nome")));
+            viagem.setDataInicio(cursor.getString(cursor.getColumnIndex("dataInicial")));
+            viagem.setDataFinal(cursor.getString(cursor.getColumnIndex("dataFinal")));
 
             viagens.add(viagem);
         }
@@ -61,6 +65,21 @@ public class ViagemDao  {
         dao.getWritableDatabase().delete(TABELA, "id= ?", args);
 
     }
+
+    public void altera(Viagem viagem){
+
+        ContentValues values = new ContentValues();
+
+        values.put("nome", viagem.getNome());
+        values.put("dataInicial", viagem.getDataInicio());
+        values.put("dataFinal", viagem.getDataFinal());
+
+        String[] args= {viagem.getId().toString()};
+
+        dao.getWritableDatabase().update(TABELA, values, "id=?" , args);
+    }
+
+
 
     public void close() {
         dao.close();
