@@ -44,7 +44,6 @@ public class RoteiroAdapter extends BaseAdapter {
         return viagens.get(position).getId();
     }
 
-    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
