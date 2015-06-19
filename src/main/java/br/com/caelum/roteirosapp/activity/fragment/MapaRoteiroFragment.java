@@ -57,7 +57,7 @@ public class MapaRoteiroFragment extends SupportMapFragment {
             markerOptions.title(viagem.getNome()).snippet(parada.getDescricao()).visible(true).position(latLngNovo);
 
             PolylineOptions polylineOptions = new PolylineOptions();
-            polylineOptions.add(latLng, latLngNovo).visible(true).width(6).color(Color.RED);
+            polylineOptions.add(latLng, latLngNovo).visible(true).width(6).color(Color.BLUE);
 
             map.addMarker(markerOptions);
             map.addPolyline(polylineOptions);

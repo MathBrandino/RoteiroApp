@@ -26,9 +26,6 @@ public class MapaFragment extends SupportMapFragment {
     private Parada parada;
 
 
-    public MapaFragment() {
-    }
-
     @Override
     public void onResume() {
         super.onResume();

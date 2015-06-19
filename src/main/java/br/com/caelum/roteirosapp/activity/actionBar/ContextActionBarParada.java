@@ -2,6 +2,7 @@ package br.com.caelum.roteirosapp.activity.actionBar;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,7 @@ import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.RoteiroViagemActivity;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
 import br.com.caelum.roteirosapp.activity.dao.ParadaDao;
+import br.com.caelum.roteirosapp.activity.helper.FormularioParadaHelper;
 import br.com.caelum.roteirosapp.activity.modelo.Parada;
 
 /**
@@ -20,6 +22,7 @@ public class ContextActionBarParada implements ActionMode.Callback {
     private RoteiroViagemActivity activity;
     private Parada paradaSelecionada;
     private DatabaseHelperDao daoHelper;
+    private FormularioParadaHelper paradaHelper;
 
 
     public ContextActionBarParada(RoteiroViagemActivity activity, Parada paradaSelecionada, DatabaseHelperDao daoHelper) {
@@ -33,11 +36,30 @@ public class ContextActionBarParada implements ActionMode.Callback {
 
         activity.getMenuInflater().inflate(R.menu.context_action_bar, menu);
 
+        MenuItem alterar = menu.findItem(R.id.menu_action_alterar);
+        alterar.setVisible(false);
+
         MenuItem deletar = menu.findItem(R.id.menu_action_deletar);
 
         MenuItem mapa = menu.findItem(R.id.menu_action_rota);
         mapa.setTitle("Rota até  Parada");
         mapa.setVisible(false);
+
+
+        MenuItem compartilhar = menu.add("Compartilhar");
+
+        compartilhar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                intent.putExtra(Intent.EXTRA_TEXT, paradaSelecionada.toString());
+                activity.startActivity(Intent.createChooser(intent, "Escolha como passar"));
+
+                return false;
+            }
+        });
 
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

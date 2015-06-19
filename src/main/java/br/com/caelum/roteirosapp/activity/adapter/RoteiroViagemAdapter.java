@@ -110,6 +110,9 @@ public class RoteiroViagemAdapter extends BaseAdapter {
             }
         });
 
+
+
+
         return view;
     }
 

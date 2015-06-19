@@ -1,5 +1,8 @@
 package br.com.caelum.roteirosapp.activity.adapter;
 
+import android.annotation.TargetApi;
+import android.graphics.Color;
+import android.os.Build;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,28 +44,23 @@ public class RoteiroAdapter extends BaseAdapter {
         return viagens.get(position).getId();
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
         Viagem viagem = viagens.get(position);
-        Log.i("VIAGEM", viagem.getNome());
-        Log.i("INICIO", viagem.getDataInicio().toString());
 
-        View view = activity.getLayoutInflater().inflate(R.layout.roteiro_item, parent, false);
+        View  view = activity.getLayoutInflater().inflate(R.layout.roteiro_item, parent, false);
+
 
         TextView nome = (TextView) view.findViewById(R.id.viagem_nome);
         nome.setText(viagem.getNome());
-
 
         TextView dataInicio = (TextView) view.findViewById(R.id.viagem_inicio);
         dataInicio.setText(viagem.getDataInicio().toString());
 
         TextView dataFinal = (TextView) view.findViewById(R.id.viagem_final);
         dataFinal.setText(viagem.getDataFinal().toString());
-
-
-
-
 
         return view;
     }
