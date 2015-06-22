@@ -5,9 +5,12 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.io.File;
 
 import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.RoteiroViagemActivity;
@@ -24,7 +27,6 @@ public class ContextActionBarParada implements ActionMode.Callback {
     private RoteiroViagemActivity activity;
     private Parada paradaSelecionada;
     private DatabaseHelperDao daoHelper;
-    private FormularioParadaHelper paradaHelper;
 
 
     public ContextActionBarParada(RoteiroViagemActivity activity, Parada paradaSelecionada, DatabaseHelperDao daoHelper) {
@@ -38,8 +40,36 @@ public class ContextActionBarParada implements ActionMode.Callback {
 
         activity.getMenuInflater().inflate(R.menu.context_action_bar, menu);
 
-        MenuItem alterar = menu.findItem(R.id.menu_action_alterar);
+        final MenuItem alterar = menu.findItem(R.id.menu_action_alterar);
         alterar.setVisible(false);
+
+        MenuItem compartilhar = menu.add("Compartilhar");
+        compartilhar.setIcon(R.drawable.compartilhar);
+
+        compartilhar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/*");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Estou fazendo uma viagem : " + activity.getViagem().getNome());
+                intent.putExtra(Intent.EXTRA_TEXT, "Minha parada é : " + paradaSelecionada.getDescricao());
+
+                if(paradaSelecionada.getCaminhoDaFoto() != null) {
+
+                    intent.putExtra(Intent.EXTRA_TEXT,"Minha viagem é : "+ activity.getViagem().getNome() +
+                            " e minha parada é : " + paradaSelecionada.getDescricao());
+                    intent.setType("image/*");
+                    File file = new File(paradaSelecionada.getCaminhoDaFoto());
+                    Uri uri = Uri.fromFile(file);
+                    intent.putExtra(Intent.EXTRA_STREAM, uri);
+
+                }
+                activity.startActivity(Intent.createChooser(intent, "Escolha "));
+
+                return false;
+            }
+        });
 
         MenuItem deletar = menu.findItem(R.id.menu_action_deletar);
 

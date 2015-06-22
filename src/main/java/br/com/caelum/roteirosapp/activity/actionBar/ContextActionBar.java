@@ -48,6 +48,32 @@ public class ContextActionBar implements ActionMode.Callback {
         paradas = dao.getLista(viagemSelecionada);
 
 
+        MenuItem compartilhar = menu.add("Compartilhar");
+        compartilhar.setIcon(R.drawable.compartilhar);
+
+        compartilhar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+
+                ParadaDao dao = new ParadaDao(daoHelper);
+                List<Parada> paradas = dao.getLista(viagemSelecionada);
+
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/*");
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Minha viagem foi : " + viagemSelecionada.getNome());
+                if(paradas.size() > 1) {
+                    intent.putExtra(Intent.EXTRA_TEXT, "Fiz até agora " + paradas.size() + " paradas");
+                } else  {
+                    intent.putExtra(Intent.EXTRA_TEXT, "Fiz até agora " + paradas.size() + " parada ");
+                }
+
+                activity.startActivity(Intent.createChooser(intent, "Escolha onde compartilhar"));
+
+                return false;
+            }
+        });
+
+
         MenuItem mapa = menu.findItem(R.id.menu_action_rota);
 
         mapa.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {

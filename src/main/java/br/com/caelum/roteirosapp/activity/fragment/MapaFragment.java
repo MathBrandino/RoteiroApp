@@ -36,10 +36,10 @@ public class MapaFragment extends SupportMapFragment {
 
         for(Parada parada : paradas) {
             GoogleMap map = getMap();
+            map.clear();
             LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
             map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));
-
         }
     }
 }
