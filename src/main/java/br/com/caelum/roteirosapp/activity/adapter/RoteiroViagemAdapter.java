@@ -3,6 +3,7 @@ package br.com.caelum.roteirosapp.activity.adapter;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Rect;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
@@ -36,7 +37,6 @@ public class RoteiroViagemAdapter extends BaseAdapter {
     private Viagem viagem;
 
     private DatabaseHelperDao daoHelper;
-
 
     public RoteiroViagemAdapter(List<Parada> paradas, RoteiroViagemActivity activity) {
         this.paradas = paradas;
@@ -74,6 +74,7 @@ public class RoteiroViagemAdapter extends BaseAdapter {
         descricao.setText(parada.getDescricao());
         descricao.setMinHeight(150);
 
+
         Button buttonEditar = (Button) view.findViewById(R.id.roteiro_parada_item_editar);
 
         buttonEditar.setOnClickListener(new View.OnClickListener() {
@@ -109,9 +110,6 @@ public class RoteiroViagemAdapter extends BaseAdapter {
 
             }
         });
-
-
-
 
         return view;
     }

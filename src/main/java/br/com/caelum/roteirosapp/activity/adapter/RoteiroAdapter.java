@@ -51,7 +51,6 @@ public class RoteiroAdapter extends BaseAdapter {
 
         View  view = activity.getLayoutInflater().inflate(R.layout.roteiro_item, parent, false);
 
-
         TextView nome = (TextView) view.findViewById(R.id.viagem_nome);
         nome.setText(viagem.getNome());
 

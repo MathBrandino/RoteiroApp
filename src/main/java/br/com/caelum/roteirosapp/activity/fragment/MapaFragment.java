@@ -23,9 +23,6 @@ import br.com.caelum.roteirosapp.activity.modelo.Viagem;
  */
 public class MapaFragment extends SupportMapFragment {
 
-    private Parada parada;
-
-
     @Override
     public void onResume() {
         super.onResume();
@@ -38,9 +35,7 @@ public class MapaFragment extends SupportMapFragment {
         List<Parada> paradas = dao.getLista(viagem);
 
         for(Parada parada : paradas) {
-
             GoogleMap map = getMap();
-            map.clear();
             LatLng latLng = new LatLng(parada.getLatitude(), parada.getLongitude());
             map.addMarker(new MarkerOptions().title("Parada").snippet(parada.getDescricao()).position(latLng).visible(true));
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 13));

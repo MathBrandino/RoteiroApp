@@ -3,17 +3,24 @@ package br.com.caelum.roteirosapp.activity.actionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
+
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.FormularioViagemActivity;
 import br.com.caelum.roteirosapp.activity.MostraViagemActivity;
 import br.com.caelum.roteirosapp.activity.RoteirosActivity;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
+import br.com.caelum.roteirosapp.activity.dao.ParadaDao;
 import br.com.caelum.roteirosapp.activity.dao.ViagemDao;
+import br.com.caelum.roteirosapp.activity.modelo.Parada;
 import br.com.caelum.roteirosapp.activity.modelo.Viagem;
 
 /**
@@ -24,6 +31,7 @@ public class ContextActionBar implements ActionMode.Callback {
     private RoteirosActivity activity;
     private Viagem viagemSelecionada;
     private DatabaseHelperDao daoHelper;
+    private List<Parada> paradas;
 
     public ContextActionBar(RoteirosActivity activity, Viagem viagemSelecionada, DatabaseHelperDao daoHelper) {
         this.activity = activity;
@@ -35,6 +43,9 @@ public class ContextActionBar implements ActionMode.Callback {
     public boolean onCreateActionMode(final ActionMode mode, Menu menu) {
 
         activity.getMenuInflater().inflate(R.menu.context_action_bar, menu);
+
+        ParadaDao dao = new ParadaDao(daoHelper);
+        paradas = dao.getLista(viagemSelecionada);
 
 
         MenuItem mapa = menu.findItem(R.id.menu_action_rota);

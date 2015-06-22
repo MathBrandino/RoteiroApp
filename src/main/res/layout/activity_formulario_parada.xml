@@ -60,6 +60,7 @@
                 android:text="0.0"
                 android:id="@+id/formulario_longitude" />
         </LinearLayout>
+
         <Button
             android:layout_width="56dp"
             android:layout_height="56dp"

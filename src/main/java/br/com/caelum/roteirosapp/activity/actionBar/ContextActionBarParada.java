@@ -3,6 +3,8 @@ package br.com.caelum.roteirosapp.activity.actionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -45,21 +47,6 @@ public class ContextActionBarParada implements ActionMode.Callback {
         mapa.setTitle("Rota até  Parada");
         mapa.setVisible(false);
 
-
-        MenuItem compartilhar = menu.add("Compartilhar");
-
-        compartilhar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.setType("text/plain");
-                intent.putExtra(Intent.EXTRA_TEXT, paradaSelecionada.toString());
-                activity.startActivity(Intent.createChooser(intent, "Escolha como passar"));
-
-                return false;
-            }
-        });
 
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override

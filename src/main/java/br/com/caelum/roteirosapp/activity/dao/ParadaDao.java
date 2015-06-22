@@ -76,6 +76,8 @@ public class ParadaDao {
 
         values.put("descricao", parada.getDescricao());
         values.put("caminhoDaFoto", parada.getCaminhoDaFoto());
+        values.put("longitude", parada.getLongitude());
+        values.put("latitude", parada.getLatitude());
 
         String[] args = {String.valueOf(parada.getId())};
 
