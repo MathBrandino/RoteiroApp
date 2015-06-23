@@ -1,11 +1,16 @@
 package br.com.caelum.roteirosapp.activity.adapter;
 
+import android.annotation.TargetApi;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
+import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -58,6 +63,7 @@ public class RoteiroViagemAdapter extends BaseAdapter {
         return paradas.get(position).getId();
     }
 
+    @TargetApi(Build.VERSION_CODES.JELLY_BEAN_MR1)
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
 
@@ -70,10 +76,25 @@ public class RoteiroViagemAdapter extends BaseAdapter {
         Intent intent = activity.getIntent();
         viagem = (Viagem) intent.getSerializableExtra("viagem");
 
+        MapaFragment mapaFragment = new MapaFragment();
+
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("parada", parada);
+
+        mapaFragment.setArguments(bundle);
+
+        FrameLayout frameMapa = (FrameLayout) view.findViewById(R.id.framelayout_parada);
+        frameMapa.setId(100 + View.generateViewId());
+
+        Log.i("MAPA FRAGMENT", String.valueOf(frameMapa.getId()));
+
+        FragmentTransaction tx = activity.getSupportFragmentManager().beginTransaction();
+        tx.replace(frameMapa.getId(), mapaFragment);
+        tx.commit();
+
         TextView descricao = (TextView) view.findViewById(R.id.roteiro_parada_item_descricao);
         descricao.setText(parada.getDescricao());
         descricao.setMinHeight(150);
-
 
         Button buttonEditar = (Button) view.findViewById(R.id.roteiro_parada_item_editar);
 

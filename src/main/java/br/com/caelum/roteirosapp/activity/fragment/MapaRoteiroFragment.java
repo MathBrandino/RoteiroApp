@@ -65,7 +65,6 @@ public class MapaRoteiroFragment extends SupportMapFragment {
             map.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, 11));
 
             latLng = latLngNovo;
-
         }
     }
 }

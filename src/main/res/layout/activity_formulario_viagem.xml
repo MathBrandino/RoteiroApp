@@ -7,7 +7,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Informe sua viagem aqui"
+        android:hint="Informe o titulo do seu roteiro aqui"
         android:id="@+id/formulario_descricao_viagem" />
     <LinearLayout
         android:layout_width="match_parent"

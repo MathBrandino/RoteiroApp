@@ -32,6 +32,5 @@ public class MostraViagemActivity extends AppCompatActivity {
         transaction.replace(R.id.framelayout_viagem, mapaFragment);
 
         transaction.commit();
-
     }
 }

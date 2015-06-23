@@ -27,6 +27,7 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true" />
 
+
             <Button
                 android:layout_width="28dp"
                 android:layout_height="28dp"
@@ -36,7 +37,7 @@
                 android:layout_marginTop="0dp"
                 android:layout_marginRight="0dp"
                 android:background="@drawable/roteiro_parada_button"
-                android:elevation="7dp"
+                android:elevation="5dp"
                 android:gravity="center"
                 android:focusable="false"
                 android:textColor="#FFFFFF"
@@ -63,11 +64,11 @@
                 android:id="@+id/framelayout_parada"
                 android:focusable="false">
 
-                <fragment
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    class="br.com.caelum.roteirosapp.activity.fragment.MapaFragment"
-                    />
+                <!--<fragment-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:name="br.com.caelum.roteirosapp.activity.fragment.MapaFragment"-->
+                    <!--/>-->
 
             </FrameLayout>
 

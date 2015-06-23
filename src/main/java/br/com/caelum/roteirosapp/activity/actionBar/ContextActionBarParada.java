@@ -52,13 +52,14 @@ public class ContextActionBarParada implements ActionMode.Callback {
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/*");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Estou fazendo uma viagem : " + activity.getViagem().getNome());
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Meu roteiro é  : " + activity.getViagem().getNome());
                 intent.putExtra(Intent.EXTRA_TEXT, "Minha parada é : " + paradaSelecionada.getDescricao());
 
                 if(paradaSelecionada.getCaminhoDaFoto() != null) {
 
-                    intent.putExtra(Intent.EXTRA_TEXT,"Minha viagem é : "+ activity.getViagem().getNome() +
-                            " e minha parada é : " + paradaSelecionada.getDescricao());
+                    intent.putExtra(Intent.EXTRA_TEXT,"Meu roteiro é  : "+ activity.getViagem().getNome() +
+                            ", e minha parada é : " + paradaSelecionada.getDescricao());
+
                     intent.setType("image/*");
                     File file = new File(paradaSelecionada.getCaminhoDaFoto());
                     Uri uri = Uri.fromFile(file);
@@ -71,12 +72,11 @@ public class ContextActionBarParada implements ActionMode.Callback {
             }
         });
 
-        MenuItem deletar = menu.findItem(R.id.menu_action_deletar);
 
         MenuItem mapa = menu.findItem(R.id.menu_action_rota);
-        mapa.setTitle("Rota até  Parada");
         mapa.setVisible(false);
 
+        MenuItem deletar = menu.findItem(R.id.menu_action_deletar);
 
         deletar.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
@@ -88,7 +88,6 @@ public class ContextActionBarParada implements ActionMode.Callback {
                         .setNegativeButton("Não", null)
                         .setPositiveButton("Sim", new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialogInterface, int which) {
-
 
                                 ParadaDao dao = new ParadaDao(daoHelper);
 
@@ -119,6 +118,5 @@ public class ContextActionBarParada implements ActionMode.Callback {
 
     @Override
     public void onDestroyActionMode(ActionMode mode) {
-
     }
 }

@@ -3,14 +3,10 @@ package br.com.caelum.roteirosapp.activity.actionBar;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.os.Parcelable;
 import android.support.v7.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import br.com.caelum.roteirosapp.R;
@@ -60,7 +56,7 @@ public class ContextActionBar implements ActionMode.Callback {
 
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.setType("text/*");
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Minha viagem foi : " + viagemSelecionada.getNome());
+                intent.putExtra(Intent.EXTRA_SUBJECT, "Meu roteiro foi : " + viagemSelecionada.getNome());
                 if(paradas.size() > 1) {
                     intent.putExtra(Intent.EXTRA_TEXT, "Fiz até agora " + paradas.size() + " paradas");
                 } else  {
@@ -83,7 +79,6 @@ public class ContextActionBar implements ActionMode.Callback {
                 intent.putExtra("viagem", viagemSelecionada);
                 activity.startActivity(intent);
 
-
                 return false;
             }
         });
@@ -97,7 +92,6 @@ public class ContextActionBar implements ActionMode.Callback {
                 intent.putExtra("Editar", viagemSelecionada);
                 activity.startActivity(intent);
 
-
                 return false;
             }
         });
@@ -108,7 +102,7 @@ public class ContextActionBar implements ActionMode.Callback {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
                 new AlertDialog.Builder(activity)
-                        .setTitle("Deletar")
+                        .setTitle("Deletar Roteiro")
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .setMessage("Deseja mesmo deletar " + viagemSelecionada.getNome() + " ?")
                         .setNegativeButton("Não", null)

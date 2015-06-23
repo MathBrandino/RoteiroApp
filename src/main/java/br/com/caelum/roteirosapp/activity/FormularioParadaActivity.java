@@ -10,6 +10,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -56,11 +57,6 @@ public class FormularioParadaActivity extends AppCompatActivity {
 
         }
 
-        if (intent.hasExtra("Editar")) {
-
-            formularioParadaHelper.colocaParadaFormulario((Parada) intent.getSerializableExtra("Editar"));
-
-        }
 
         Button button = formularioParadaHelper.getButtonFoto();
 
@@ -91,7 +87,6 @@ public class FormularioParadaActivity extends AppCompatActivity {
                         Double longitude = location.getLongitude();
 
                         formularioParadaHelper.setaCoordenadas(latitude.toString(), longitude.toString());
-
                     }
 
                     public void onStatusChanged(String provider, int status, Bundle extras) {
@@ -164,6 +159,36 @@ public class FormularioParadaActivity extends AppCompatActivity {
             } else {
                 this.caminhoDaFoto = null;
             }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("caminhoDaFoto", caminhoDaFoto );
+
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+         caminhoDaFoto = (String) savedInstanceState.getSerializable("caminhoDaFoto");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        Intent intent = getIntent();
+
+        if (intent.hasExtra("Editar")) {
+
+            formularioParadaHelper.colocaParadaFormulario((Parada) intent.getSerializableExtra("Editar"));
+
+        }
+
+        if(caminhoDaFoto != null){
+            formularioParadaHelper.carregaImagem(caminhoDaFoto);
         }
     }
 }
