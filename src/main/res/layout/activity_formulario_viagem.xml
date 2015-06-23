@@ -30,5 +30,20 @@
             android:id="@+id/formulario_viagem_data_final"/>
 
     </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <CalendarView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:background="@color/linha_impar"
+            />
 
+        <CalendarView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@color/linha_par"/>
+    </LinearLayout>
 </LinearLayout>

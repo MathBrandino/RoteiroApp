@@ -53,10 +53,6 @@ public class Parada implements Serializable {
         this.caminhoDaFoto = caminhoDaFoto;
     }
 
-    @Override
-    public String toString() {
-        return descricao;
-    }
 
 
 }

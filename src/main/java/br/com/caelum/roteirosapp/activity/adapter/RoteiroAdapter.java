@@ -54,6 +54,7 @@ public class RoteiroAdapter extends BaseAdapter {
         TextView nome = (TextView) view.findViewById(R.id.viagem_nome);
         nome.setText(viagem.getNome());
 
+
         TextView dataInicio = (TextView) view.findViewById(R.id.viagem_inicio);
         dataInicio.setText(viagem.getDataInicio().toString());
 

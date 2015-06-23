@@ -62,15 +62,7 @@
                 android:layout_weight="1"
                 android:layout_height="match_parent"
                 android:id="@+id/framelayout_parada"
-                android:focusable="false">
-
-                <!--<fragment-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="match_parent"-->
-                    <!--android:name="br.com.caelum.roteirosapp.activity.fragment.MapaFragment"-->
-                    <!--/>-->
-
-            </FrameLayout>
+                android:focusable="false" />
 
         </LinearLayout>
 
