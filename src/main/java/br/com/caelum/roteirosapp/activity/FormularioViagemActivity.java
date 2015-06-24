@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.CalendarView;
+import android.widget.Toast;
 
 import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.dao.DatabaseHelperDao;
@@ -25,6 +27,7 @@ public class FormularioViagemActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_viagem);
 
+
         Intent intent = getIntent();
 
 
@@ -36,7 +39,22 @@ public class FormularioViagemActivity extends AppCompatActivity {
         if (intent.hasExtra("Editar")){
             viagemHelper.colocaViagemFormulario((Viagem) intent.getSerializableExtra("Editar"));
 
+
         }
+
+        viagemHelper.getCalendarFinal().setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                viagemHelper.setDataFinal(viagemHelper.getCalendarFinal().getDate());
+            }
+        });
+
+        viagemHelper.getCalendarInicial().setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(CalendarView view, int year, int month, int dayOfMonth) {
+                viagemHelper.setDataInicial(viagemHelper.getCalendarInicial().getDate());
+            }
+        });
 
     }
 

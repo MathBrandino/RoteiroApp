@@ -1,7 +1,13 @@
 package br.com.caelum.roteirosapp.activity.helper;
 
 import android.app.Activity;
+import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.TextView;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import br.com.caelum.roteirosapp.R;
 import br.com.caelum.roteirosapp.activity.modelo.Viagem;
@@ -15,14 +21,19 @@ public class FormularioViagemHelper {
 
     private Viagem viagem;
 
-    private EditText dataInicio;
-    private EditText dataFinal;
+    private TextView dataInicio;
+    private TextView dataFinal;
+
+    private CalendarView calendarInicial;
+    private CalendarView calendarFinal;
+
 
     public FormularioViagemHelper(Activity activity) {
         nome = (EditText) activity.findViewById(R.id.formulario_descricao_viagem);
-        dataInicio = (EditText) activity.findViewById(R.id.formulario_viagem_data_inicial);
-        dataFinal = (EditText) activity.findViewById(R.id.formulario_viagem_data_final);
-
+        dataInicio = (TextView) activity.findViewById(R.id.formulario_viagem_data_inicial);
+        dataFinal =  (TextView) activity.findViewById(R.id.formulario_viagem_data_final);
+        calendarInicial = (CalendarView) activity.findViewById(R.id.calendario_inicial);
+        calendarFinal = (CalendarView) activity.findViewById(R.id.calendario_final);
         viagem = new Viagem();
     }
 
@@ -60,6 +71,7 @@ public class FormularioViagemHelper {
     public void mostraErroDataInicio() {
         dataInicio.setError("Data inicial não pode ser vazia");
     }
+
 
     public boolean validaDataInicial(){
         if(!temDataInicio()){
@@ -101,4 +113,29 @@ public class FormularioViagemHelper {
         return false;
     }
 
+
+    public CalendarView getCalendarInicial() {
+        return calendarInicial;
+    }
+
+    public CalendarView getCalendarFinal() {
+        return calendarFinal;
+    }
+
+    public void setDataFinal(long dataFinalCalendario) {
+        String data = converteData(dataFinalCalendario);
+        this.dataFinal.setText(data);
+    }
+
+    public void  setDataInicial(long dataInicialCalendario){
+        String data = converteData(dataInicialCalendario);
+        this.dataInicio.setText(data);
+    }
+
+    public String converteData(long data){
+        Date date = new Date(data);
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        String dataText = dateFormat.format(date).toString();
+        return dataText;
+    }
 }

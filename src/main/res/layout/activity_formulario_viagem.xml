@@ -14,14 +14,14 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:inputType="date"
             android:hint="Data Inicial"
             android:id="@+id/formulario_viagem_data_inicial"/>
-        <EditText
+        <TextView
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -37,13 +37,15 @@
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="match_parent"
+            android:id="@+id/calendario_inicial"
             android:background="@color/linha_impar"
             />
-
-        <CalendarView
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@color/linha_par"/>
+          <CalendarView
+              android:layout_width="0dp"
+              android:layout_weight="1"
+              android:layout_height="match_parent"
+              android:id="@+id/calendario_final"
+              android:background="@color/linha_par"
+            />
     </LinearLayout>
 </LinearLayout>
